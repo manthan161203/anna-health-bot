@@ -1,14 +1,16 @@
 name: Run Anna Health Bot
 
 on:
+  push:
+    branches: [ master ]      # ← trigger on push to master
   schedule:
-    - cron: '*/5 * * * *'   # Every 5 minutes
-  workflow_dispatch:          # Manual trigger too
+    - cron: '*/5 * * * *'     # Every 5 minutes
+  workflow_dispatch:           # Manual trigger
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 5        # Stop after 5 min, next one starts
+    timeout-minutes: 5
 
     steps:
       - name: Checkout code
